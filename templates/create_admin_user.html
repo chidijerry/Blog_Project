@@ -1,0 +1,33 @@
+{% extends 'base_template_for_admin.html' %}
+{% block title %}
+Sign Up
+{% endblock %}
+
+{% block content %}
+<!-- Navbar (sit on top) -->
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='create_and_login_template.css')}}">
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
+    <a href="#home" class="w3-bar-item w3-button">My Blog Post</a>
+    <!-- Right-sided navbar links. Hide them on small screens -->
+    <div class="w3-right w3-hide-small">
+     <a href="blog" class="w3-bar-item w3-button">View Blog Post</a>
+      <a href="login" class="w3-bar-item w3-button">Login</a>
+    </div>
+  </div>
+</div>
+
+  <!-- Contact Section -->
+  <div class="w3-container w3-padding-64" id="contact">
+    <h1>Sign Up</h1><br>
+    <form action="/signup" method="POST">
+      <p><input class="w3-input w3-padding-16" type="text" placeholder="Full_Name" name="full_name"></p>
+      <p><input class="w3-input w3-padding-16" type="email" placeholder="Email address" name="admin_email"></p>
+      <p><input class="w3-input w3-padding-16" type="Password" placeholder="Password" name="admin_password" ></p>
+      <p><button class="w3-button w3-light-grey w3-section" type="submit">Sign Up</button></p>
+    </form>
+  </div>
+
+<!-- End page content -->
+</div>
+{% endblock %}

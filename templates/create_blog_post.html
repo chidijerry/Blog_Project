@@ -1,0 +1,42 @@
+{%extends 'base_template_for_admin.html'%}
+ {%block title%}
+Create Blog Post
+ {% endblock %}
+
+{% block content %}
+<!-- Links (sit on top) -->
+<div class="w3-top">
+  <div class="w3-row w3-padding w3-black">
+    <div class="w3-col s3">
+      <a href="#" class="w3-button w3-block w3-black">Create Blog Post</a>
+    </div>
+    <div class="w3-col s3">
+            <a href="/edit_blog_post"> <button class="w3-button w3-block w3-black" >Edit Blog Post</button></a>
+  </div>
+    <div class="w3-col s3">
+            <a href="/delete_blog_post"><button class="w3-button w3-block w3-black">Delete Blog Post</button></a>
+    </div>
+    <div class="w3-col s3">
+        <form action="/logout" method="POST">
+            <button class="w3-button w3-block w3-black" type="submit" >Logout</button>
+        </form>
+    </div>
+  </div>
+</div>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='create_and_login_template.css')}}">
+<!-- Contact/Area Container -->
+<div class="w3-container" id="where" style="padding-bottom:32px;">
+  <div class="w3-content" style="max-width:700px">
+    <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">Create a Blog Post</span></h5>
+    <form action="/upload_blog" method="POST">
+      <input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Blog Title" name="blog_title" required>
+        <br>
+      <textarea class="w3-input w3-padding-16 w3-border" type="text"  name="blog_content" required></textarea>
+        <br>
+      <button class="w3-button w3-black" type="submit">Create</button>
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}

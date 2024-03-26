@@ -1,0 +1,45 @@
+{% extends 'base_template_for_admin.html' %}
+{% block title %}
+    View Blog Post
+{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='create_and_login_template.css')}}">
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
+    <a  class="w3-bar-item w3-button">My Blog Post</a>
+    <!-- Right-sided navbar links. Hide them on small screens -->
+    <div class="w3-right w3-hide-small">
+      <a href="signup" class="w3-bar-item w3-button">Sign up</a>
+      <a href="login" class="w3-bar-item w3-button">Login</a>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+    {% if values != None %}
+
+    {% for x in values%}
+<!-- Page content -->
+<div class="w3-content" style="max-width:1100px">
+
+
+    <div class="w3-center m6 w3-padding-large">
+
+        <h1 class="w3-large">{{ x.title }} </h1>
+        <br>
+        <br>
+      <p>{{ x.content }} </p>
+
+      </div>
+  </div>
+        {% endfor %}
+{% endif %}
+{% if values == None %}
+    <div class="w3-center m6 w3-padding-large">
+      <h1 class="w3-center">No Blog Post avaliable</h1><br> </div>
+  <hr>
+{% endif %}
+{% endblock %}

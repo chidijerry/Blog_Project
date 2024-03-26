@@ -1,0 +1,56 @@
+{%extends 'base_template_for_admin.html'%}
+
+ {%block title%}
+Edit Blog Post
+ {% endblock %}
+
+{% block content %}
+
+<!-- Links (sit on top) -->
+<div class="w3-top">
+  <div class="w3-row w3-padding w3-black">
+    <div class="w3-col s3">
+
+            <a href="/create_blog"><button class="w3-button w3-block w3-black" >Create Blog Post</button></a>
+      </div>
+    <div class="w3-col s3">
+      <a href="#about" class="w3-button w3-block w3-black">Edit Blog Post</a>
+    </div>
+    <div class="w3-col s3">
+
+            <a href="/delete_blog_post"><button class="w3-button w3-block w3-black"  >Delete Blog Post</button></a>
+
+ </div>
+    <div class="w3-col s3">
+     <form action="/logout" method="POST">
+
+   <button class="w3-button w3-block w3-black" type="submit" >Logout</button>
+
+        </form> </div>
+  </div>
+</div>
+
+<!-- Contact/Area Container -->
+<div class="w3-container" id="where" style="padding-bottom:32px;">
+  <div class="w3-content" style="max-width:700px">
+    <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">Edit Blog Post</span></h5>
+
+        {% if values != None %}
+
+      {% for x in values %}
+          <form action="/save_changes" method="POST">
+      <p><input class="w3-input w3-padding-16 w3-border" type="text" name="blog_title" value="{{ x.title }}"></p>
+      <textarea class="w3-input w3-padding-16 w3-border" type="text" name="blog_content" >{{ x.content }}</textarea>
+        <input type="hidden" name="blog_id" value="{{ x.id }}">
+      <p><button class="w3-button w3-black" type="submit">Save Changes</button></p>
+          </form>
+        {% endfor %}
+  {% endif %}
+  {% if values == None %}
+      <h1 class="w3-input w3-padding-16 w3-border">There is no stored blog post</h1>
+  {% endif %}
+
+  </div>
+</div>
+
+ {% endblock %}
