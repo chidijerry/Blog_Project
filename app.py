@@ -30,18 +30,6 @@ def create_app():
         login_manager.login_view = 'login'
         app.register_blueprint(main_blueprint)
 
-        @app.errorhandler(HTTPException)
-        def handle_exception(e):
-            """Handle HTTP exceptions globally."""
-            logging.error(e)
-            return jsonify(error=str(e)), e.code
-
-        @app.errorhandler(Exception)
-        def handle_all_exception(e):
-            """Handle all other exceptions."""
-            logging.error(e)
-            return jsonify(error="An unexpected error occurred"), 500
-
         @app.route('/')
         @app.route('/blog')
         def view_blog():
