@@ -22,5 +22,9 @@ This project is a Flask application that creates a blog post , edit's the blog p
 ```bash
  pip install -r requirements.txt
  
+ flask db migrate
+ 
+ flask db upgrade
+ 
  python app.py
 ```
