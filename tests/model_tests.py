@@ -1,6 +1,6 @@
 import pytest
-from app import create_app, db
-from models import Admin, BlogPost
+from blogProject import create_app, db
+from blogProject.models import Admin, BlogPost
 
 @pytest.fixture(scope='module')
 def test_app():

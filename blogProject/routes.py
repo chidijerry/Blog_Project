@@ -1,9 +1,9 @@
 from flask import Blueprint, render_template, redirect, url_for, request, flash
-from flask_login import login_user, current_user, logout_user
+from flask_login import current_user, logout_user
 
-from .forms import LoginForm
-from .models import Admin, BlogPost
-from .app import db
+from blogProject.forms import LoginForm
+from blogProject.models import BlogPost
+
 
 from .services import create_admin, user_login_manager, upload_blog_posts, save_blog_post_edit, remove_blog_post
 # Create a Blueprint named 'main'

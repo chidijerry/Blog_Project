@@ -1,6 +1,6 @@
 from werkzeug.security import generate_password_hash, check_password_hash
 
-from .app import db
+from . import db
 from datetime import datetime
 from flask_login import UserMixin
 
@@ -13,12 +13,11 @@ class Admin(db.Model, UserMixin):
     is_active = db.Column(db.Boolean, default=True)
 
 
-    ## hashing of password with validility
-    ## hashes passwords
+    # hashes passwords
     def set_password(self, password):
         self.password = generate_password_hash(password)
 
-    ## checks password that has been hashed
+    # checks password that has been hashed
     def check_password(self, password):
         return check_password_hash(self.password, password)
 
@@ -32,6 +31,6 @@ class Admin(db.Model, UserMixin):
 class BlogPost(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(80), unique=True, nullable=False)
-    content = db.Column(db.Text, nullable=False)  # Changed to db.Text and removed unique=True
+    content = db.Column(db.Text, nullable=False)
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     admin_id = db.Column(db.Integer, db.ForeignKey('admin.id'), nullable=False)
